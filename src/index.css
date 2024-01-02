@@ -5,9 +5,9 @@
 body {
   background: #fffce2;
   /* font-family: 'Bodoni Moda', serif; */
-  /* font-family: 'Cinzel', serif; */
+  font-family: 'Cinzel', serif;
   /* font-family: 'Old Standard TT', serif; */
-  font-family: 'Prata', serif;
+  /* font-family: 'Prata', serif; */
 }
 
 button, p, .pops, .pops-all * {
@@ -61,6 +61,16 @@ img.zoom-in {
 .grid-box {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.box-320 {
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+.grid-center {
+  /* justify-items: center; */
+  justify-content: center;
+  /* align-content: center; */
 }
 
 @keyframes image_zoom {

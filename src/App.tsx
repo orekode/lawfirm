@@ -2,12 +2,15 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 
 // pages 
 import * as GeneralPages from "@/pages/general";
+import Root from "@/layouts/Root";
+
+
 
 function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route>
+      <Route element={<Root />}>
         <Route path="/" element={<GeneralPages.Home />} />
       </Route>
     )

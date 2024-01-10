@@ -1,19 +1,10 @@
+import { Nav, Image } from "@/components";
+import Slides from "@/components/Slides";
 import { Facebook, Linkedin, Star, Twitter} from "lucide-react";
 import { useEffect, useState } from "react";
 
 
-const Image = ({ image, animate='', cover=false, children } : { image: string, animate?: string, cover?: boolean, children: any}) => {
-  return (
-    <div className={`${cover ? 'h-full w-full' : ''} relative`}>
-      <div className={`${cover ? 'h-full w-full' : ''} relative z-10`}>
-        {children}
-      </div>
-      <div className="absolute-cover ">
-        <img src={image}  className={`img-cover ${animate}`}/>
-      </div>
-    </div>
-  );
-}
+
 
 
 const slides = [
@@ -31,100 +22,17 @@ const slides = [
   },
 ]
 
-const navs = [
-  {
-    name: "Home",
-    link: "/",
-  },
-  {
-    name: "About",
-    link: "/about",
-  },
-  {
-    name: "Lawyers",
-    link: "/lawyers",
-  },
 
-  {
-    name: "Areas of Litigation",
-    link: "/",
-  },
-
-  {
-    name: "Contact Us",
-    link: "/",
-  },
-]
 
 const Home = () => {
 
-  const [ activeSlide, setActiveSlide ] = useState([2, 0]);
-
-  useEffect(() => {
-
-    let timeout = setTimeout(() => {
-
-      let newSlide = [];
-
-      if( activeSlide.length < 2 ) {
-        newSlide = [...activeSlide, activeSlide.length];
-      } else {
-        let current = activeSlide[1];
-        let next = activeSlide[1] + 1;
-
-        if(next < slides.length)
-          newSlide = [current, next];
-        else {
-          newSlide = [current, 0];
-        }
-
-      }
-
-      console.log(newSlide);
-      setActiveSlide(newSlide);
-
-    }, 7000);
-
-    return () => clearTimeout(timeout);
-
-  }, [activeSlide]);
+  
 
   return (
     <div>
-          <nav className="text-white px-24 py-6 flex items-center justify-between fixed top-0 left-0 w-full z-50 bg-gradient-to-b from-black to-transparent">
-            <div className="logo">ELTHED LOGO</div>
-            <div className="nav-links flex items-center gap-6">
+          <Nav />
 
-              {navs.map(( item, index ) => 
-                <div key={index} className="pops ">
-                  <span>{item.name}</span>
-                </div>
-              )}
-
-              <button  className="bg-white text-neutral-700 px-6 py-2 capitalize">
-                Give us a call
-              </button>
-            </div>
-          </nav>
-
-          <div className="sliders relative z-0 min-h-screen">
-              {slides.map((item, index) => 
-                <div key={index} className={`absolute top-0 left-0 h-full w-full z-${10 * (activeSlide.indexOf(index) < 0 ? 0 : activeSlide.indexOf(index))} ${activeSlide.includes(index) ? "clip-in" : "clip-out"} `}>
-                  <Image image={item.image} animate={'zoom-in'}>
-                    <div className="text-white bg-gradient-to-r from-black to-transparent">
-                      <div className="">
-                        <div className=" min-h-screen p-24 flex items-center">
-                          <div className="max-w-[600px]">
-                            <h1 data-aos="zoom-in-up" className="text-5xl leading-tight capitalize">{item.title}</h1>
-                            <button data-aos="zoom-in-up" className="px-6 py-4 bg-[#e88b28] capitalize mt-3">Get a consultation</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </Image>
-                </div>
-              )}
-          </div>
+          <Slides slides={slides} />
 
           <section className="p-24 ">
             <div className="text-center">
@@ -143,9 +51,6 @@ const Home = () => {
                     <div className="my-1.5">• Out of Court Attendance</div>
                   </div>
                 </div>
-
-                
-
               </div>
 
               <div className="col-span-4 ">

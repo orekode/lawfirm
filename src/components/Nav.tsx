@@ -36,7 +36,7 @@ const Nav = () => {
             <nav className="text-white px-24 py-6 flex items-center justify-between fixed top-0 left-0 w-full z-50 bg-gradient-to-b from-black to-transparent">
                 <div className="logo">ELTHED LOGO</div>
 
-                <div className={`nav-links flex items-center max-[1075px]:items-start gap-6 max-[1075px]:gap-1 max-[1075px]:fixed top-0 ${ visible ? 'left-0' : '-left-96'} transition-all duration-300 max-[1075px]:bg-white max-[1075px]:flex-col max-[1075px]:h-screen max-[1075px]:w-[320px] max-[1075px]:p-6 max-[1075px]:py-12 relative`}>
+                <div className={`nav-links flex items-center max-[1075px]:items-start gap-6 max-[1075px]:gap-1 max-[1075px]:fixed top-0 ${ visible ? 'max-[1075px]:left-0' : 'max-[1075px]:-left-96'} transition-all duration-300 max-[1075px]:bg-white max-[1075px]:flex-col max-[1075px]:h-screen max-[1075px]:w-[320px] max-[1075px]:p-6 max-[1075px]:py-12 relative`}>
 
                     {navs.map(( item, index ) => 
                         <div key={index} className="pops max-[1075px]:text-black max-[1075px]:flex justify-between items-center max-[1075px]:w-full max-[1075px]:text-lg max-[1075px]:border-b max-[1075px]:py-3 max-[1075px]:hover:bg-[#fff9c5] max-[1075px]:hover:pl-3  transition-all duration-200">

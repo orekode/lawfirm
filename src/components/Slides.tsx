@@ -42,9 +42,9 @@ const Slides = ({ slides }: { slides: Record<string, any>[]}) => {
                 <Image image={item.image} animate={'zoom-in'}>
                 <div className="text-white bg-gradient-to-r from-black to-transparent">
                     <div className="">
-                    <div className=" min-h-screen p-24 flex items-center">
+                    <div className=" min-h-screen p-24 max-[645px]:p-12 flex items-center">
                         <div className="max-w-[600px]">
-                        <h1 data-aos="zoom-in-up" className="text-5xl leading-tight capitalize">{item.title}</h1>
+                        <h1 data-aos="zoom-in-up" className="text-5xl max-[645px]:text-4xl leading-tight capitalize">{item.title}</h1>
                         <button data-aos="zoom-in-up" className="px-6 py-4 bg-[#e88b28] capitalize mt-3">Get a consultation</button>
                         </div>
                     </div>

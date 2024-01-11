@@ -2,7 +2,9 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 
 // pages 
 import * as GeneralPages from "@/pages/general";
+import * as AdminPages   from "@/pages/admin";
 import Root from "@/layouts/Root";
+import AdminLayout from "./layouts/AdminLayout";
 
 
 
@@ -12,6 +14,12 @@ function App() {
     createRoutesFromElements(
       <Route element={<Root />}>
         <Route path="/" element={<GeneralPages.Home />} />
+
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="dashboard"  element={<AdminPages.Dashboard />} />
+          <Route path="litigation" element={<AdminPages.Litigation />} />
+          <Route path="litigation/new" element={<AdminPages.NewLitigation />} />
+        </Route>
       </Route>
     )
   )

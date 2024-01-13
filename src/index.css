@@ -90,6 +90,10 @@ img.zoom-in {
   width: calc(100vw + 260px);
 }
 
+.ql-editor {
+  min-height: 350px;
+}
+
 @keyframes image_zoom {
   0%, 100% {
     scale: 1;

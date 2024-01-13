@@ -5,6 +5,7 @@ import * as GeneralPages from "@/pages/general";
 import * as AdminPages   from "@/pages/admin";
 import Root from "@/layouts/Root";
 import AdminLayout from "./layouts/AdminLayout";
+import BackLayout from "./layouts/BackLayout";
 
 
 
@@ -18,7 +19,9 @@ function App() {
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="dashboard"  element={<AdminPages.Dashboard />} />
           <Route path="litigation" element={<AdminPages.Litigation />} />
-          <Route path="litigation/new" element={<AdminPages.NewLitigation />} />
+          <Route element={<BackLayout />}>
+            <Route path="litigation/new" element={<AdminPages.NewLitigation />} />
+          </Route>
         </Route>
       </Route>
     )

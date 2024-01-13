@@ -10,12 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.202",
     "aos": "^2.3.4",
+    "axios": "^1.6.2",
+    "lodash": "^4.17.21",
     "lucide-react": "^0.303.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-loading-skeleton": "^3.3.1",
+    "react-query": "^3.39.3",
     "react-quill": "^2.0.0",
-    "react-router-dom": "^6.21.1"
+    "react-router-dom": "^6.21.1",
+    "sweetalert2": "^11.10.2"
   },
   "devDependencies": {
     "@types/aos": "^3.0.7",

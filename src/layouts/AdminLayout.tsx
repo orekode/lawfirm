@@ -3,7 +3,7 @@
 
 import { BookUser, Home, ImagePlus, Layout, MessageCircle, Scale, Settings, Stars, Users } from 'lucide-react'
 import {} from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Outlet, useLocation } from 'react-router-dom'
 
 const navs = [
     {
@@ -56,6 +56,8 @@ const navs = [
 
 const AdminLayout = () => {
 
+    const location = useLocation();
+
   return (
     <div>
         <div className="admin-layout transition-all duration-300 flex fixed h-screen top-0 right-0 overflow-hidden bg-blue-50">
@@ -64,7 +66,7 @@ const AdminLayout = () => {
                 <div className="navs p-3">
                     {navs.map((item, index) => 
                         <Link to={item.link} key={index}>
-                            <div className="nav-item flex items-center gap-4 px-3 py-1.5 mb-1.5 border hover:border-blue-500 hover:bg-blue-600 border-transparent rounded-md">
+                            <div className={`nav-item flex items-center gap-4 px-3 py-1.5 mb-1.5 border hover:border-blue-500 ${ location.pathname == item.link ? "bg-blue-500" : ""} hover:bg-blue-600 border-transparent rounded-md`}>
                                 <div className="">{item.icon}</div>
                                 <div className="pops text-lg">{item.name}</div>
                             </div>
@@ -74,11 +76,11 @@ const AdminLayout = () => {
             </div>
             <div className="flex-grow">
 
-                <div className="h-[5vh] flex items-center justify-between bg-white">
+                <div className="h-[8vh] flex items-center justify-between bg-white">
 
                 </div>
 
-                <div className="h-[95vh] bg-green-50 overflow-y-scroll p-12"> 
+                <div className="h-[92vh] bg-green-50 overflow-y-scroll p-9"> 
                     <Outlet />
                 </div>
             </div>

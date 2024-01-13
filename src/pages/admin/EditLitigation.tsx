@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 
 
 
-const NewLitigation = () => {
+const EditLitigation = () => {
 
   const [ formData, setFormData ] = useState<Record<string, any>>({});
   const [ load, setLoad ] = useState<boolean>(false);
@@ -79,4 +79,4 @@ const NewLitigation = () => {
   )
 }
 
-export default NewLitigation
+export default EditLitigation

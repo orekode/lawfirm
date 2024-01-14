@@ -50,7 +50,7 @@ export const create = async ( { data, url } : InputIn) => {
             }
         });
 
-        console.table(response);
+        console.log(response);
 
         return {
             success: response.status == 200 || response.status == 201,
@@ -58,6 +58,8 @@ export const create = async ( { data, url } : InputIn) => {
         };
 
     } catch (error) {
+
+        console.log(error);
 
         const response: ErrorResponse =  {
             success: false,
@@ -74,6 +76,13 @@ export const create = async ( { data, url } : InputIn) => {
                 ...response.errors,
                 general: message,
             };
+
+            if( error.response?.data.exception && error.response?.data.exception.includes("PostTooLargeException")) {
+                response.errors = {
+                    ...response.errors,
+                    general: "File/Image Uploaded Is Too Large"
+                }
+            }
         }
         return response;
 

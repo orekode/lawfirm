@@ -2,7 +2,7 @@ import { deleteLitigation } from "@/api/litigation/delete";
 import { useLitigation } from "@/api/litigation/read";
 import { updateLitigation } from "@/api/litigation/update";
 import { Loading, Upload } from "@/components"
-import { Delete, Trash } from "lucide-react";
+import { Trash } from "lucide-react";
 import { ChangeEvent, useEffect, useState } from "react"
 import { useQueryClient } from "react-query";
 import ReactQuill from "react-quill";

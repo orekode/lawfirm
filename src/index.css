@@ -94,6 +94,10 @@ img.zoom-in {
   min-height: 350px;
 }
 
+.short .ql-editor {
+  min-height: 150px;
+}
+
 @keyframes image_zoom {
   0%, 100% {
     scale: 1;

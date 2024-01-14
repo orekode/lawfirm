@@ -7,3 +7,6 @@ export { default as EditLitigation  } from "./litigation/EditLitigation";
 export { default as Reviews         } from "./reviews/Reviews";
 export { default as NewReview       } from "./reviews/NewReview";
 export { default as EditReview      } from "./reviews/EditReview";
+export { default as Lawyers         } from "./lawyers/Lawyers";
+export { default as NewLawyers      } from "./lawyers/NewLawyer";
+export { default as EditLawyers      } from "./lawyers/EditLawyer";

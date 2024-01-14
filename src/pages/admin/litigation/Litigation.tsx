@@ -4,7 +4,7 @@ import { ChangeEvent, useEffect, useState } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import { Link } from 'react-router-dom'
 import { debounce } from "lodash"
-import { Pagination } from '@/components'
+import { Empty, Pagination } from '@/components'
 
 
 const Litigation = () => {
@@ -48,16 +48,19 @@ const Litigation = () => {
                 </button>
             </div>
 
+
             <div className="grid-box box-200 gap-6 mt-12">
                 {litigations && litigations.map((item: Record<string, any>, index: number) => 
-                    <div  className="relative group hover:scale-105 h-max overflow-hidden transition duration-300" key={index}>
-                        <div className="image bg-gray-50 h-[300px] overflow-hidden rounded-md">
-                            <img src={item.image} className="img-cover" />
+                    <Link key={index} to={`/admin/litigation/edit/${item.id}`}>
+                        <div  className="relative group hover:scale-105 h-max overflow-hidden transition duration-300">
+                            <div className="image bg-gray-50 h-[300px] overflow-hidden rounded-md">
+                                <img src={item.image} className="img-cover" />
+                            </div>
+                            <div className="absolute bottom-0 left-0 w-full p-3">
+                                <button className="bg-white group-hover:bg-[#e88b28] group-hover:text-white transition duration-300  px-6 py-3 w-full text-center rounded-t-3xl rounded-b-md font-bold">{item.title}</button>
+                            </div>
                         </div>
-                        <div className="absolute bottom-0 left-0 w-full p-3">
-                            <button className="bg-white group-hover:bg-[#e88b28] group-hover:text-white transition duration-300  px-6 py-3 w-full text-center rounded-t-3xl rounded-b-md font-bold">{item.title}</button>
-                        </div>
-                    </div>
+                    </Link>
                 )}
 
                 {!data?.data && Array.from({length: 4}, (_, index) => 
@@ -69,7 +72,12 @@ const Litigation = () => {
                 )}
             </div>
 
-            <Pagination meta={data?.meta} callback={setPage} />
+            <Empty load={litigations && litigations.length == 0} />
+
+            {(litigations && litigations.length > 0) && 
+                <Pagination meta={data?.meta} callback={setPage} />
+            }
+
         </div>
     )
 }

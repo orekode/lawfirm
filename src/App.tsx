@@ -17,11 +17,16 @@ function App() {
         <Route path="/" element={<GeneralPages.Home />} />
 
         <Route path="/admin" element={<AdminLayout />}>
-          <Route path="dashboard"  element={<AdminPages.Dashboard />} />
-          <Route path="litigation" element={<AdminPages.Litigation />} />
+
+          <Route path="dashboard"  element={<AdminPages.Dashboard   />} />
+          <Route path="litigation" element={<AdminPages.Litigation  />} />
+          <Route path="reviews"    element={<AdminPages.Reviews     />} />
+
           <Route element={<BackLayout />}>
-            <Route path="litigation/new" element={<AdminPages.NewLitigation />} />
+            <Route path="litigation/new"      element={<AdminPages.NewLitigation  />} />
+            <Route path="litigation/edit/:id" element={<AdminPages.EditLitigation />} />
           </Route>
+          
         </Route>
       </Route>
     )

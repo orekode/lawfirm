@@ -1,7 +1,9 @@
+import { useLitigations } from "@/api/litigation/read";
 import { Nav, Image } from "@/components";
 import Slides from "@/components/Slides";
 import { Facebook, Linkedin, Star, Twitter} from "lucide-react";
 import { useEffect, useState } from "react";
+import Skeleton from "react-loading-skeleton";
 
 
 
@@ -22,9 +24,47 @@ const slides = [
   },
 ]
 
+const Litigation = () => {
+
+  const { data } = useLitigations({ page: 1 });
+  const [ litigations, setLitigations ] = useState([]);
+
+  useEffect(() => {
+    if(data)
+
+    setLitigations(data?.data);
+  }, [data]);
+
+
+  return (
+    <div className="grid-box gap-6 mt-12">
+      {litigations.slice(0, 4).map((item: Record<string, any>, index: number) => 
+        <div data-aos="zoom-in-up" className="relative group hover:scale-105 h-max overflow-hidden transition duration-300" key={index}>
+          <div className="image bg-gray-50 h-[400px] overflow-hidden ">
+            <img src={item.image} className="img-cover" />
+          </div>
+          <div className="absolute bottom-0 left-0 w-full p-3">
+            <button className="bg-white group-hover:bg-[#e88b28] group-hover:text-white transition duration-300  px-6 py-3 w-full text-center rounded-t-3xl font-bold">{item.title}</button>
+          </div>
+        </div>
+      )}
+
+      {!data?.data && Array.from({length: 4}, (_, index) => 
+          <div  className="relative group hover:scale-105 h-max overflow-hidden transition duration-300" key={index}>
+              <div className="image  h-[400px] overflow-hidden ">
+                  <Skeleton height={300} className='h-full block w-full' containerClassName='h-full block w-full'/>
+              </div>
+          </div>
+      )}
+    </div>
+  );
+
+}
+
 
 
 const Home = () => {
+
 
   
 
@@ -114,18 +154,9 @@ const Home = () => {
               <button data-aos="zoom-in-up" className="px-6 py-4 bg-[#e88b28] text-white capitalize mt-3">See the complete list</button>
             </div>
 
-            <div className="grid-box gap-6 mt-12">
-                {Array.from({length: 4}, (_, index) => 
-                  <div data-aos="zoom-in-up" className="relative group hover:scale-105 h-max overflow-hidden transition duration-300" key={index}>
-                    <div className="image bg-gray-50 h-[400px] overflow-hidden ">
-                      <img src="/images/lawyer.jpg" className="img-cover" />
-                    </div>
-                    <div className="absolute bottom-0 left-0 w-full p-3">
-                      <button className="bg-white group-hover:bg-[#e88b28] group-hover:text-white transition duration-300  px-6 py-3 w-full text-center rounded-t-3xl font-bold">Land  Litigation</button>
-                    </div>
-                  </div>
-                )}
-            </div>
+            <Litigation />
+
+            
           </section>
 
 

@@ -1,9 +1,10 @@
 import { Upload, UploadCloud } from "lucide-react";
-import { ChangeEvent, useRef, useState } from "react"
+import { ChangeEvent, useEffect, useRef, useState } from "react"
 
 
 
-export const Image = ({ callback, error="" } : { callback: any, error?: string}) => {
+export const Image = ({ init='', callback, error="" } : { init?: string | File | Blob,  callback: any, error?: string}) => {
+
 
     const [ image, setImage ] = useState('');
 
@@ -19,6 +20,11 @@ export const Image = ({ callback, error="" } : { callback: any, error?: string})
         callback(event.target.files[0]);
         setImage(image);
     }
+
+    useEffect(() => {
+        if(init instanceof File || init instanceof Blob) init = URL.createObjectURL(init);
+        setImage(init);
+    }, [init]);
 
   return (
     <div className="h-full w-full overflow-hidden relative">

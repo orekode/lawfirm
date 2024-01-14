@@ -1,6 +1,8 @@
+import { deleteLitigation } from "@/api/litigation/delete";
 import { useLitigation } from "@/api/litigation/read";
 import { updateLitigation } from "@/api/litigation/update";
 import { Loading, Upload } from "@/components"
+import { Delete, Trash } from "lucide-react";
 import { ChangeEvent, useEffect, useState } from "react"
 import { useQueryClient } from "react-query";
 import ReactQuill from "react-quill";
@@ -53,6 +55,48 @@ const EditLitigation = () => {
     console.log(response);
   }
 
+  const handleDelete = async () => {
+    
+    const cofirmation = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    });
+      
+    if (!cofirmation.isConfirmed) return;
+
+    setLoad(true);
+    const response = await deleteLitigation(id);
+    setLoad(false);
+
+    if(!response) {
+      Swal.fire({
+        icon: 'error',
+        title: "Unable to Delete Litigation",
+        text: 'Please try again later'
+      });
+
+    }
+
+    else {
+      Swal.fire({
+        icon: "success",
+        title: "Litigation Deleted Successfully",
+        text: ""
+      });
+
+      navigate(-1);
+      queryClient.invalidateQueries(["litigations"]);
+      queryClient.invalidateQueries(["litigation"]);
+    }
+
+    console.log(response);
+  }
+
   useEffect(() => {
     setFormData({
       title: data?.title,
@@ -88,7 +132,12 @@ const EditLitigation = () => {
           </div>
         </div>
 
-        <button onClick={handleCreate} className="rounded-md text-center bg-blue-900 text-white px-6 py-3 w-full mt-6">Create Litigation</button>
+        <div className="flex gap-1.5 mt-6">
+          <button onClick={handleCreate} className="rounded-md flex-grow text-center bg-blue-900 text-white px-6 py-3 w-full ">Update Litigation</button>
+          <button onClick={handleDelete} className="rounded-md text-center bg-red-500 hover:bg-red-400 text-white  w-[50px] h-[50px] flex items-center justify-center">
+            <Trash />
+          </button>
+        </div>
       </div>
     </div>
   )

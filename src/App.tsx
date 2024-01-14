@@ -25,6 +25,7 @@ function App() {
           <Route element={<BackLayout />}>
             <Route path="litigation/new"      element={<AdminPages.NewLitigation  />} />
             <Route path="litigation/edit/:id" element={<AdminPages.EditLitigation />} />
+            <Route path="review/new"          element={<AdminPages.NewReview      />} />
           </Route>
           
         </Route>

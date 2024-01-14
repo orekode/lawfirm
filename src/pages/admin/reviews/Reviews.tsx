@@ -3,7 +3,7 @@
 import { useLitigations } from '@/api/litigation/read';
 import { Empty, Pagination } from '@/components'
 import { debounce } from 'lodash';
-import { Search } from 'lucide-react';
+import { Search, Star } from 'lucide-react';
 import { useState, useEffect, ChangeEvent } from 'react'
 import Skeleton from 'react-loading-skeleton';
 import { Link } from 'react-router-dom';
@@ -35,8 +35,8 @@ const Reviews = () => {
     return (
         <div >
             <div className="flex items-center justify-between">
-                <div className="font-bold text-xl">Areas Of Litigation</div>
-                <Link to="/admin/litigation/new">
+                <div className="font-bold text-xl">Reviews</div>
+                <Link to="/admin/review/new">
                     <button className="px-6 py-2 bg-[#ffae34] text-white rounded">Add New</button>
                 </Link>
             </div>
@@ -49,16 +49,27 @@ const Reviews = () => {
             </div>
 
 
-            <div className="grid-box box-200 gap-6 mt-12">
+            <div className="flex flex-wrap gap-6 mt-12">
                 {reviews && reviews.map((item: Record<string, any>, index: number) => 
-                    <Link key={index} to={`/admin/litigation/edit/${item.id}`}>
-                        <div  className="relative group hover:scale-105 h-max overflow-hidden transition duration-300">
-                            <div className="image bg-gray-50 h-[300px] overflow-hidden rounded-md">
-                                <img src={item.image} className="img-cover" />
+                    <Link className='flex-grow w-[450px] last-of-type:max-w-[49%]' key={index} to={`/admin/litigation/edit/${item.id}`}>
+                        <div className="relative w-full bg-white group hover:scale-105 h-max overflow-hidden transition duration-300 p-9" key={index}>
+                            <div className="">
+                                <div className="mx-auto h-[120px] w-[120px] rounded-full overflow-hidden">
+                                <img src={item.image} alt="" className="img-cover" />
+                                </div>
+
+                                <div className="flex justify-center items-center text-yellow-400 gap-1.5 my-3">
+                                {Array.from({length: 5}, (_, index) => 
+                                    <Star key={index} fill="gold"/>
+                                )}
+                                </div>
+
+                                <div className="text-center">Adeniyi David Shalom</div>
+
                             </div>
-                            <div className="absolute bottom-0 left-0 w-full p-3">
-                                <button className="bg-white group-hover:bg-[#e88b28] group-hover:text-white transition duration-300  px-6 py-3 w-full text-center rounded-t-3xl rounded-b-md font-bold">{item.title}</button>
-                            </div>
+                            <p className="mt-3 text-center max-[450px]:text-sm">
+                                The team at Ethed@Law Consult, demonstrated a deep understanding of the intricacies of my case and provided me with clear and practical legal advice. They took the time to listen to my concerns, answered all my questions, and kept me well informed throughout the process. I felt supported and confident that my best interests were being protected.
+                            </p>
                         </div>
                     </Link>
                 )}

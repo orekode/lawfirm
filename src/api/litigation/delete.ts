@@ -1,23 +1,11 @@
 
-import axios from "@/api/config";
+import { deleteIt } from "@/api/config";
 
 export const deleteLitigation = async (id: number | string | undefined) => {
 
-    try {
+    return await deleteIt({
+        id,
+        url: '/litigation'
+    });
 
-        const response = await axios.post(`/litigation/${id}`, {}, {
-            headers: {
-                "Content-Type": "multipart/form-data"
-            },
-            params: {
-                _method: 'delete'
-            }
-        });
-
-        return response.status == 200 || response.status == 201
-
-    } catch (error) {
-        console.log(error);
-        return false;
-    }
 }

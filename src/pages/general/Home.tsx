@@ -1,4 +1,5 @@
 import { useLitigations } from "@/api/litigation/read";
+import { useReviews } from "@/api/reviews/read";
 import { Nav, Image } from "@/components";
 import Slides from "@/components/Slides";
 import { Facebook, Linkedin, Star, Twitter} from "lucide-react";
@@ -61,6 +62,65 @@ const Litigation = () => {
 
 }
 
+
+const Reviews = () => {
+
+    const { data } = useReviews({ page: 1 })
+
+    return (
+      <div className="flex flex-wrap justify-center min-[645px]:p-12 gap-6">
+        {data?.data && data.data.map((item: Record<string, any>, index: number) => 
+            <div  data-aos="zoom-in-up"className="relative w-[450px] max-[1126px]:w-full bg-white group hover:scale-105 h-max overflow-hidden transition duration-300 p-9" key={index}>
+              <div className="">
+                <div className="mx-auto h-[120px] w-[120px] rounded-full overflow-hidden">
+                  <img src={item.image} alt="" className="img-cover" />
+                </div>
+
+                <div className="flex justify-center items-center text-yellow-400 gap-1.5 my-3">
+                  {Array.from({length: item.stars}, (_, index) => 
+                      <Star key={index} fill="gold"/>
+                  )}
+                  {Array.from({length: 5 - item.stars}, (_, index) => 
+                      <span key={index} className="text-gray-200">
+                          <Star fill="#e9e9e9"/>
+                      </span>
+                  )}
+                </div>
+
+                <div className="text-center">{item.name}</div>
+
+              </div>
+              <p className="mt-3 text-center max-[450px]:text-sm">
+                {item.review}
+              </p>
+            </div>
+        )}
+        {!data?.data && Array.from({length: 3}, (_, index) => 
+            <div  data-aos="zoom-in-up"className="relative w-[450px] max-[1126px]:w-full bg-white group hover:scale-105 h-max overflow-hidden transition duration-300 p-9" key={index}>
+              <div className="">
+                <div className="mx-auto h-[120px] w-[120px] rounded-full overflow-hidden">
+                  <Skeleton height={200} className='h-full block w-full' containerClassName='h-full block w-full'/>
+                </div>
+
+                <div className="flex justify-center items-center text-gray-200 gap-1.5 my-3">
+                  {Array.from({length: 5}, (_, index) => 
+                    <Star key={index} fill="#e9e9e9"/>
+                  )}
+                </div>
+
+                <div className="text-center">
+                  <Skeleton className='block w-full'/>
+                </div>
+
+              </div>
+              <p className="mt-3 text-center max-[450px]:text-sm">
+                  <Skeleton className='block w-full'/>
+              </p>
+            </div>
+        )}
+      </div>
+    )
+}
 
 
 const Home = () => {
@@ -156,7 +216,6 @@ const Home = () => {
 
             <Litigation />
 
-            
           </section>
 
 
@@ -166,31 +225,7 @@ const Home = () => {
                 <p className="max-w-[400px] mx-auto my-3"></p>
               </div>
 
-
-              <div className="flex flex-wrap justify-center min-[645px]:p-12 gap-6">
-                {Array.from({length: 3}, (_, index) => 
-                    <div  data-aos="zoom-in-up"className="relative w-[450px] max-[1126px]:w-full bg-white group hover:scale-105 h-max overflow-hidden transition duration-300 p-9" key={index}>
-                      <div className="">
-                        <div className="mx-auto h-[120px] w-[120px] rounded-full overflow-hidden">
-                          <img src="/images/lawyer.jpg" alt="" className="img-cover" />
-                        </div>
-
-                        <div className="flex justify-center items-center text-yellow-400 gap-1.5 my-3">
-                          {Array.from({length: 5}, (_, index) => 
-                            <Star key={index} fill="gold"/>
-                          )}
-                        </div>
-
-                        <div className="text-center">Adeniyi David Shalom</div>
-
-                      </div>
-                      <p className="mt-3 text-center max-[450px]:text-sm">
-                        The team at Ethed@Law Consult, demonstrated a deep understanding of the intricacies of my case and provided me with clear and practical legal advice. They took the time to listen to my concerns, answered all my questions, and kept me well informed throughout the process. I felt supported and confident that my best interests were being protected.
-                      </p>
-                    </div>
-                )}
-              </div>
-
+              <Reviews />
 
             </section>
 

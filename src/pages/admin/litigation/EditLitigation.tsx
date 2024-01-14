@@ -56,7 +56,7 @@ const EditLitigation = () => {
   }
 
   const handleDelete = async () => {
-    
+
     const cofirmation = await Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -108,7 +108,7 @@ const EditLitigation = () => {
 
   return (
     <div>
-      <Loading  load={load}/>
+      <Loading  load={load || !data}/>
       <div className="relative bg-white rounded-md shadow">
         <div className="overflow-hidden rounded-md h-[300px] w-full relative">
           <Upload.Image init={data?.cover_image} error={errors.cover_image} callback={(image: File) => setFormData({ ...formData, cover_image: image})} />

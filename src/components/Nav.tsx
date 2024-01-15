@@ -20,7 +20,7 @@ const navs = [
 
   {
     name: "Areas of Litigation",
-    link: "/",
+    link: "/litigations",
   },
 
   {

@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer components {
+  .w-full-890 {
+    width: 100% !important;
+  }
+}
+
 body {
   background: #fffce2;
   /* color: #fff9c5; */

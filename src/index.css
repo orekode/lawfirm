@@ -98,6 +98,10 @@ img.zoom-in {
   min-height: 150px;
 }
 
+.pear {
+  border-radius: 10% 25% 17.5% 25% !important;
+}
+
 @keyframes image_zoom {
   0%, 100% {
     scale: 1;

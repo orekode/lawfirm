@@ -27,8 +27,8 @@ const navs = [
         icon: <Stars strokeWidth={1.3}/>
     },
     {
-        name: "Consultations",
-        link: "/admin/consultations",
+        name: "Blog Posts",
+        link: "/admin/blog",
         icon: <BookUser strokeWidth={1.3}/>
     },
     {

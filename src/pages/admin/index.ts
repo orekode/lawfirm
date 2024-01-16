@@ -9,4 +9,7 @@ export { default as NewReview       } from "./reviews/NewReview";
 export { default as EditReview      } from "./reviews/EditReview";
 export { default as Lawyers         } from "./lawyers/Lawyers";
 export { default as NewLawyers      } from "./lawyers/NewLawyer";
-export { default as EditLawyers      } from "./lawyers/EditLawyer";
+export { default as EditLawyers     } from "./lawyers/EditLawyer";
+export { default as Blog            } from "./blog/Blog";
+export { default as NewPost         } from "./blog/NewPost";
+export { default as EditPost        } from "./blog/EditPost";

@@ -13,6 +13,7 @@
     "@types/lodash": "^4.14.202",
     "aos": "^2.3.4",
     "axios": "^1.6.2",
+    "framer-motion": "^10.18.0",
     "lodash": "^4.17.21",
     "lucide-react": "^0.303.0",
     "react": "^18.2.0",
@@ -21,7 +22,8 @@
     "react-query": "^3.39.3",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.21.1",
-    "sweetalert2": "^11.10.2"
+    "sweetalert2": "^11.10.2",
+    "tailwind-scrollbar": "^3.0.5"
   },
   "devDependencies": {
     "@types/aos": "^3.0.7",

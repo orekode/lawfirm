@@ -12,9 +12,8 @@ const Litigations = () => {
     const [ litigations, setLitigations ] = useState([]);
   
     useEffect(() => {
-      if(data)
-  
-      setLitigations(data?.data);
+      if(data && data?.data)
+        setLitigations(data?.data);
     }, [data]);
 
 
@@ -29,7 +28,7 @@ const Litigations = () => {
                 </div>
 
                 <div className="grid-box gap-6 mt-12">
-                    {litigations.map((item: Record<string, any>, index: number) => 
+                    {litigations && litigations?.map((item: Record<string, any>, index: number) => 
                         <Link to={`/litigation/${item.id}`} data-aos="zoom-in-up" className="relative group hover:scale-105 h-max overflow-hidden transition duration-300" key={index}>
                             <div className="image bg-gray-50 h-[400px] overflow-hidden ">
                                 <img src={item.image} className="img-cover" />
@@ -49,7 +48,7 @@ const Litigations = () => {
                     )}
                 </div>
 
-                <Empty load={litigations && litigations.length == 0} />
+                <Empty load={data?.data && data?.data.length == 0} />
 
                 {(litigations && litigations.length > 0) && 
                     <Pagination meta={data?.meta} callback={setPage} />

@@ -9,6 +9,10 @@
   }
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #fffce2;
   /* color: #fff9c5; */

@@ -27,6 +27,7 @@ function App() {
           <Route path="litigation" element={<AdminPages.Litigation  />} />
           <Route path="reviews"    element={<AdminPages.Reviews     />} />
           <Route path="lawyers"    element={<AdminPages.Lawyers     />} />
+          <Route path="blog"       element={<AdminPages.Blog        />} />
 
           <Route element={<BackLayout />}>
             <Route path="litigation/new"       element={<AdminPages.NewLitigation  />} />
@@ -35,6 +36,8 @@ function App() {
             <Route path="reviews/edit/:id"     element={<AdminPages.EditReview     />} />
             <Route path="lawyers/new"          element={<AdminPages.NewLawyers     />} />
             <Route path="lawyers/edit/:id"     element={<AdminPages.EditLawyers    />} />
+            <Route path="blog/new"             element={<AdminPages.NewPost        />} />
+            <Route path="blog/edit/:id"        element={<AdminPages.EditPost       />} />
           </Route>
           
         </Route>

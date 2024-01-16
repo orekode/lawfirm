@@ -1,5 +1,7 @@
 
 export * as Upload from "./Upload";
+export * as Btn    from "./Btn";
+export * as Scroll from "./Scroll";
 
 export { default as Nav         } from "./Nav";
 export { default as Image       } from "./Image";

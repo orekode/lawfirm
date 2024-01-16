@@ -109,6 +109,13 @@ img.zoom-in {
   border-radius: 10% 25% 17.5% 25% !important;
 }
 
+@media only screen and (max-width: 1050px) {
+  .max-260 {
+    width: calc(100% - 260px) !important;
+  }
+  
+}
+
 @keyframes image_zoom {
   0%, 100% {
     scale: 1;

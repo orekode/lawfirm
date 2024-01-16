@@ -14,10 +14,12 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route element={<Root />}>
-        <Route path="/"             element={<GeneralPages.Home         />} />
-        <Route path="/about"        element={<GeneralPages.About        />} />
-        <Route path="/lawyers"      element={<GeneralPages.Lawyers      />} />
-        <Route path="/litigations"  element={<GeneralPages.Litigations  />} />
+        <Route path="/"                 element={<GeneralPages.Home         />} />
+        <Route path="/about"            element={<GeneralPages.About        />} />
+        <Route path="/lawyers"          element={<GeneralPages.Lawyers      />} />
+        <Route path="/litigations"      element={<GeneralPages.Litigations  />} />
+        <Route path="/litigation/:id"   element={<GeneralPages.Litigation   />} />
+        <Route path="/blog"             element={<GeneralPages.Blog         />} />
 
         <Route path="/admin" element={<AdminLayout />}>
 

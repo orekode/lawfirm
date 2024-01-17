@@ -138,7 +138,7 @@ const EditReview = () => {
             </div>
 
             <div className="flex gap-1.5 mt-6">
-                <button onClick={handleUpdate} className="rounded-md flex-grow text-center bg-blue-900 text-white px-6 py-3 w-full ">Update Review</button>
+                <button onClick={handleUpdate} className="rounded-md flex-grow text-center bg-blue-900 text-white px-6 py-3 w-full ">Update Litigation</button>
                 <button onClick={handleDelete} className="rounded-md text-center bg-red-500 hover:bg-red-400 text-white  w-[50px] h-[50px] flex items-center justify-center">
                     <Trash />
                 </button>

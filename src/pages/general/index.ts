@@ -6,3 +6,4 @@ export { default as Lawyers     } from "./Lawyers";
 export { default as Litigations } from "./Litigations";
 export { default as Litigation  } from "./Litigation";
 export { default as Blog        } from "./Blog";
+export { default as Contact     } from "./Contact";

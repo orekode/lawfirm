@@ -1,6 +1,6 @@
 import { read, readList } from "@/api/config";
 
-export const useLitigations = ({ page = 1, search = '' }) => {
+export const usePosts = ({ page = 1, search = '' }) => {
 
     return readList({
         page,
@@ -14,7 +14,7 @@ export const useLitigations = ({ page = 1, search = '' }) => {
 
 }
 
-export const useLitigation = ({ id } : { id: number | string | undefined }) => {
+export const usePost = ({ id } : { id: number | string | undefined }) => {
     return read({
         id,
         url: '/blog',

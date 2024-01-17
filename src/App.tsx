@@ -20,6 +20,7 @@ function App() {
         <Route path="/litigations"      element={<GeneralPages.Litigations  />} />
         <Route path="/litigation/:id"   element={<GeneralPages.Litigation   />} />
         <Route path="/blog"             element={<GeneralPages.Blog         />} />
+        <Route path="/contact"          element={<GeneralPages.Contact      />} />
 
         <Route path="/admin" element={<AdminLayout />}>
 
@@ -28,6 +29,8 @@ function App() {
           <Route path="reviews"    element={<AdminPages.Reviews     />} />
           <Route path="lawyers"    element={<AdminPages.Lawyers     />} />
           <Route path="blog"       element={<AdminPages.Blog        />} />
+          <Route path="messages"   element={<AdminPages.Messages    />} />
+          <Route path="slides"     element={<AdminPages.Slides      />} />
 
           <Route element={<BackLayout />}>
             <Route path="litigation/new"       element={<AdminPages.NewLitigation  />} />
@@ -38,6 +41,8 @@ function App() {
             <Route path="lawyers/edit/:id"     element={<AdminPages.EditLawyers    />} />
             <Route path="blog/new"             element={<AdminPages.NewPost        />} />
             <Route path="blog/edit/:id"        element={<AdminPages.EditPost       />} />
+            <Route path="slides/new"           element={<AdminPages.NewSlide       />} />
+            <Route path="slides/edit/:id"      element={<AdminPages.EditSlide      />} />
           </Route>
           
         </Route>

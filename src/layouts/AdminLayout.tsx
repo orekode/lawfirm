@@ -74,7 +74,7 @@ const AdminLayout = () => {
                     )}
                 </div>
             </div>
-            <div className="flex-grow">
+            <div style={{width: "calc(100% - 260px)"}} className="flex-grow">
 
                 <div className="h-[8vh] flex items-center justify-between bg-white">
 

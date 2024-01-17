@@ -1,8 +1,10 @@
-import { deleteLitigation } from "@/api/litigation/delete";
-import { useLitigation } from "@/api/litigation/read";
-import { updateLitigation } from "@/api/litigation/update";
+import { deletePost } from "@/api/blog/delete";
+import { usePost } from "@/api/blog/read";
+import { updatePost } from "@/api/blog/update";
+import { showCreateCategoryPrompt } from "@/api/categories/create";
 import { Loading, Upload } from "@/components"
-import { Trash } from "lucide-react";
+import CategorySelect from "@/components/CategorySelect";
+import { Plus, Trash } from "lucide-react";
 import { ChangeEvent, useEffect, useState } from "react"
 import { useQueryClient } from "react-query";
 import ReactQuill from "react-quill";
@@ -16,7 +18,7 @@ const EditPost = () => {
 
   const { id } = useParams();
 
-  const { data } = useLitigation({ id });
+  const { data } = usePost({ id });
 
   const [ formData, setFormData ] = useState<Record<string, any>>({});
   const [ load, setLoad ] = useState<boolean>(false);
@@ -27,7 +29,7 @@ const EditPost = () => {
 
   const handleCreate = async () => {
     setLoad(true);
-    const response = await updateLitigation({...formData, id});
+    const response = await updatePost({...formData, id});
     setLoad(false);
 
     if(!response.success) {
@@ -43,13 +45,13 @@ const EditPost = () => {
     else {
       Swal.fire({
         icon: "success",
-        title: "Litigation Updated Successfully",
+        title: "Post Updated Successfully",
         text: ""
       });
 
       navigate(-1);
-      queryClient.invalidateQueries(["litigations"]);
-      queryClient.invalidateQueries(["litigation"]);
+      queryClient.invalidateQueries(["blog"]);
+      // queryClient.invalidateQueries(["blog"]);
     }
 
     console.log(response);
@@ -70,7 +72,7 @@ const EditPost = () => {
     if (!cofirmation.isConfirmed) return;
 
     setLoad(true);
-    const response = await deleteLitigation(id);
+    const response = await deletePost(id);
     setLoad(false);
 
     if(!response) {
@@ -85,13 +87,13 @@ const EditPost = () => {
     else {
       Swal.fire({
         icon: "success",
-        title: "Litigation Deleted Successfully",
+        title: "Post Deleted Successfully",
         text: ""
       });
 
       navigate(-1);
-      queryClient.invalidateQueries(["litigations"]);
-      queryClient.invalidateQueries(["litigation"]);
+      queryClient.invalidateQueries(["blog"]);
+      queryClient.invalidateQueries(["blog"]);
     }
 
     console.log(response);
@@ -101,6 +103,8 @@ const EditPost = () => {
     setFormData({
       title: data?.title,
       description: data?.description,
+      category: data?.category_id,
+      content: data?.content,
     });
     console.log(data);
 
@@ -120,20 +124,40 @@ const EditPost = () => {
 
       <div className=" mt-[120px] ">
         <div className="form-control flex flex-col gap-1">
-          <label htmlFor="name">Litigation Title</label>
+          <label htmlFor="name">Title</label>
           <input value={formData.title} onChange={(event: ChangeEvent<HTMLInputElement>) => setFormData({...formData, title: event.target.value})} name="name" type="text"  className="shadow px-3 py-1.5 rounded-md text-xl pops"/>
           <div className="text-xs text-red-400 pops">{errors?.title}</div>
         </div>
 
+        <div className="form-control flex flex-col gap-1 mt-4">
+            <label htmlFor="review">Short Description</label>
+            <textarea value={formData.description} onChange={(event: ChangeEvent<HTMLTextAreaElement>) => setFormData({...formData, description: event.target.value})} name="review"   className="shadow px-3 py-1.5 rounded-md text-xl pops h-[150px]"/>
+            <div className="text-xs text-red-400 pops">{errors?.description}</div>
+        </div>
+
+        <div className="form-control flex flex-col gap-1 mt-4">
+            <label htmlFor="stars">Category</label>
+            <div className="flex items-center gap-2">
+              <select value={formData.category} onChange={(event: ChangeEvent<HTMLSelectElement>) => setFormData({...formData, category: event.target.value})} name="stars"  className="shadow px-3 py-1.5 rounded-md text-xl pops bg-white" style={{width: "calc(100% - 60px)"}}>
+                  <CategorySelect />
+              </select>
+              <button onClick={() => showCreateCategoryPrompt(setLoad, setErrors, queryClient)}className="bg-blue-950 text-white h-[50px] w-[50px] rounded-md flex items-center justify-center ">
+                    <Plus strokeWidth={1} />
+              </button>
+            </div>
+            <div className="text-xs text-red-400 pops">{errors?.category}</div>
+        </div>
+
         <div className="mt-6">
-          <div className="text-xs text-red-400 pops">{errors?.description}</div>
+          <label htmlFor="name">Content</label>
+          <div className="text-xs text-red-400 pops">{errors?.content}</div>
           <div className="bg-white">
-            <ReactQuill value={formData.description} onChange={(value) => setFormData({...formData, description: value})} />
+            <ReactQuill value={formData.content} onChange={(value) => setFormData({...formData, content: value})} />
           </div>
         </div>
 
         <div className="flex gap-1.5 mt-6">
-          <button onClick={handleCreate} className="rounded-md flex-grow text-center bg-blue-900 text-white px-6 py-3 w-full ">Update Litigation</button>
+          <button onClick={handleCreate} className="rounded-md flex-grow text-center bg-blue-900 text-white px-6 py-3 w-full ">Update Blog Post</button>
           <button onClick={handleDelete} className="rounded-md text-center bg-red-500 hover:bg-red-400 text-white  w-[50px] h-[50px] flex items-center justify-center">
             <Trash />
           </button>

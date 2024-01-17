@@ -48,9 +48,11 @@ const Nav = ({ bg=true }) => {
                         </Link>
                     )}
 
-                    <button  className="bg-white text-neutral-700 max-[1075px]:text-white max-[1075px]:bg-[#ffa03a] max-[1075px]:w-full  px-6 py-2 capitalize">
-                        Contact Us
-                    </button>
+                    <Link to={'/contact'}>
+                      <button  className="bg-white text-neutral-700 max-[1075px]:text-white max-[1075px]:bg-[#ffa03a] max-[1075px]:w-full  px-6 py-2 capitalize">
+                          Contact Us
+                      </button>
+                    </Link>
 
                     <div onClick={() => setVisible(!visible)} className="min-[1075px]:hidden absolute top-0 right-0 bg-neutral-800 hover:bg-red-400 rounded-bl-3xl flex items-center justify-center h-[40px] w-[40px]">
                         <X strokeWidth={1}/>

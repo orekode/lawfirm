@@ -4,7 +4,7 @@ import Skeleton from 'react-loading-skeleton'
 import { Link } from 'react-router-dom'
 import { debounce } from "lodash"
 import { Empty, Pagination } from '@/components'
-import { useLawyers } from '@/api/lawyers/read'
+import { usePosts } from '@/api/blog/read'
 
 
 const Blog = () => {
@@ -13,14 +13,15 @@ const Blog = () => {
     const [ search, setSearch ]           = useState<string>('');
     const [ litigations, setLitigations ] = useState<Record<string, any>[]>([]);
 
-    const { data, refetch } = useLawyers({ page, search });
+    const { data, refetch } = usePosts({ page, search });
+
+    console.log(data);
 
     const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
 
         debounce(
             () => {
                 setSearch(event.target.value)
-                console.log('hello');
             },
             2000
         )();
@@ -51,16 +52,16 @@ const Blog = () => {
 
             <div className="grid-box box-200 gap-6 mt-12">
                 {litigations && litigations.map((item: Record<string, any>, index: number) => 
-                    <Link key={index} to={`/admin/lawyers/edit/${item.id}`}>
+                    <Link key={index} to={`/admin/blog/edit/${item.id}`}>
                         <div key={index} className="card hover:text-blue-800">
                             <div className="image h-[260px] overflow-hidden rounded-md">
-                                <img src="/images/justice.jpg" alt="" className="img-cover" />
+                                <img src={item.image} alt="" className="img-cover" />
                             </div>
                             <div className="details py-2">
-                                <div className="title leading-tight text-xl">THis is the title that would be displayed</div>
-                                <p className="pops mt-2 text-gray-700">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, dolore. Ab animi corrupti rerum minima suscipit delectus iure beatae voluptate.</p>
+                                <div className="title leading-tight text-xl">{item.title}</div>
+                                <p className="pops mt-2 text-gray-700">{item.description}</p>
                                 <div className="flex items-center justify-between mt-2">
-                                    <Link to={`/article/${1}`} className='text-[#e88b28] underline'>Read More</Link>
+                                    <Link to={`/article/${item.id}`} className='text-[#e88b28] underline'>Read More</Link>
                                     <span className=" block text-sm">2 min read</span>
                                 </div>
                             </div>

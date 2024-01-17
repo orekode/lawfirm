@@ -1,8 +1,8 @@
 import axios, { AxiosError } from "axios";
 import { useQuery } from "react-query";
 
-// axios.defaults.baseURL = "http://127.0.0.1:8000/api";
-axios.defaults.baseURL = "http://192.168.44.138:8000/api";
+axios.defaults.baseURL = "http://127.0.0.1:8000/api";
+// axios.defaults.baseURL = "http://192.168.44.138:8000/api";
 
 
 interface InputIn {

@@ -13,3 +13,7 @@ export { default as EditLawyers     } from "./lawyers/EditLawyer";
 export { default as Blog            } from "./blog/Blog";
 export { default as NewPost         } from "./blog/NewPost";
 export { default as EditPost        } from "./blog/EditPost";
+export { default as Messages        } from "./messages/Messages";
+export { default as Slides          } from "./slides/Slides";
+export { default as NewSlide        } from "./slides/NewSlide";
+export { default as EditSlide       } from "./slides/EditSlide";

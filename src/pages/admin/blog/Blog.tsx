@@ -59,7 +59,7 @@ const Blog = () => {
                             </div>
                             <div className="details py-2">
                                 <div className="title leading-tight text-xl">{item.title}</div>
-                                <p className="pops mt-2 text-gray-700">{item.description}</p>
+                                <p className="pops mt-2 text-gray-700">{item.description?.slice(0, 150)} {item.description.length > 150 && "..."}</p>
                                 <div className="flex items-center justify-between mt-2">
                                     <Link to={`/article/${item.id}`} className='text-[#e88b28] underline'>Read More</Link>
                                     <span className=" block text-sm">2 min read</span>

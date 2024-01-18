@@ -21,3 +21,17 @@ export const usePost = ({ id } : { id: number | string | undefined }) => {
         key: 'blog',
     });
 }
+
+export const useRelatedPosts = ({id = 1, page = 1, search = '' }) => {
+
+    return readList({
+        page,
+        url: `/relatedPosts/${id}`,
+        key: "blog",
+        params: {
+            page,
+            "title[in]" : search
+        }
+    });
+
+}

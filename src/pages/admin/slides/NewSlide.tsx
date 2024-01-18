@@ -1,8 +1,7 @@
-import { createLitigation } from "@/api/litigation/create";
+import { createSlide } from "@/api/slides/create";
 import { Loading, Upload } from "@/components"
 import { ChangeEvent, useState } from "react"
 import { useQueryClient } from "react-query";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -20,7 +19,7 @@ const NewLitigation = () => {
 
   const handleCreate = async () => {
     setLoad(true);
-    const response = await createLitigation(formData);
+    const response = await createSlide(formData);
     setLoad(false);
 
     if(!response.success) {
@@ -36,12 +35,12 @@ const NewLitigation = () => {
     else {
       Swal.fire({
         icon: "success",
-        title: "Litigation Created Successfully",
+        title: "Slide Created Successfully",
         text: ""
       });
 
       navigate(-1);
-      queryClient.invalidateQueries(["litigations"]);
+      queryClient.invalidateQueries(["slides"]);
     }
 
     console.log(response);
@@ -52,7 +51,7 @@ const NewLitigation = () => {
       <Loading  load={load}/>
       <div className="relative bg-white rounded-md shadow">
         <div className="overflow-hidden rounded-md h-[300px] w-full relative">
-          <Upload.Image error={errors.cover_image} callback={(image: File) => setFormData({ ...formData, cover_image: image})} />
+          <Upload.Image error={errors.image} callback={(image: File) => setFormData({ ...formData, image: image})} />
         </div>
       </div>
 
@@ -65,14 +64,14 @@ const NewLitigation = () => {
         
         <div className="form-control flex flex-col gap-1 mt-3">
           <label htmlFor="name">Slide Button</label>
-          <input onChange={(event: ChangeEvent<HTMLInputElement>) => setFormData({...formData, title: event.target.value})} name="name" type="text"  className="shadow px-3 py-1.5 rounded-md text-xl pops"/>
-          <div className="text-xs text-red-400 pops">{errors?.title}</div>
+          <input onChange={(event: ChangeEvent<HTMLInputElement>) => setFormData({...formData, button: event.target.value})} name="name" type="text"  className="shadow px-3 py-1.5 rounded-md text-xl pops"/>
+          <div className="text-xs text-red-400 pops">{errors?.button}</div>
         </div>
 
         <div className="form-control flex flex-col gap-1 mt-3">
           <label htmlFor="name">Button Link</label>
-          <input onChange={(event: ChangeEvent<HTMLInputElement>) => setFormData({...formData, title: event.target.value})} name="name" type="text"  className="shadow px-3 py-1.5 rounded-md text-xl pops"/>
-          <div className="text-xs text-red-400 pops">{errors?.title}</div>
+          <input onChange={(event: ChangeEvent<HTMLInputElement>) => setFormData({...formData, link: event.target.value})} name="name" type="text"  className="shadow px-3 py-1.5 rounded-md text-xl pops"/>
+          <div className="text-xs text-red-400 pops">{errors?.link}</div>
         </div>
 
         <button onClick={handleCreate} className="rounded-md text-center bg-blue-900 text-white px-6 py-3 w-full mt-6">Create Slide</button>

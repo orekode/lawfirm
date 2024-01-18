@@ -17,3 +17,5 @@ export { default as Messages        } from "./messages/Messages";
 export { default as Slides          } from "./slides/Slides";
 export { default as NewSlide        } from "./slides/NewSlide";
 export { default as EditSlide       } from "./slides/EditSlide";
+export { default as Settings        } from "./Settings";
+export { default as Login           } from "./Login";

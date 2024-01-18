@@ -1,4 +1,4 @@
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements, redirect } from "react-router-dom";
 
 // pages 
 import * as GeneralPages from "@/pages/general";
@@ -21,9 +21,22 @@ function App() {
         <Route path="/litigation/:id"   element={<GeneralPages.Litigation   />} />
         <Route path="/blog"             element={<GeneralPages.Blog         />} />
         <Route path="/contact"          element={<GeneralPages.Contact      />} />
+        <Route path="/article/:id"      element={<GeneralPages.Article      />} />
 
-        <Route path="/admin" element={<AdminLayout />}>
+        <Route path="/login"            element={<AdminPages.Login      />} />
 
+        <Route path="/admin"
+          loader={async () => {
+            if ( !localStorage.getItem("ghhg") ) {
+              throw redirect("/login");
+            }
+
+            return {};
+          }}
+
+         element={<AdminLayout />}>
+
+          <Route index             element={<AdminPages.Dashboard   />} />
           <Route path="dashboard"  element={<AdminPages.Dashboard   />} />
           <Route path="litigation" element={<AdminPages.Litigation  />} />
           <Route path="reviews"    element={<AdminPages.Reviews     />} />
@@ -31,6 +44,7 @@ function App() {
           <Route path="blog"       element={<AdminPages.Blog        />} />
           <Route path="messages"   element={<AdminPages.Messages    />} />
           <Route path="slides"     element={<AdminPages.Slides      />} />
+          <Route path="Settings"   element={<AdminPages.Settings    />} />
 
           <Route element={<BackLayout />}>
             <Route path="litigation/new"       element={<AdminPages.NewLitigation  />} />

@@ -1,9 +1,9 @@
 
 
-import { useReviews } from '@/api/reviews/read';
+import { useSlides } from '@/api/slides/read';
 import { Empty, Pagination } from '@/components'
 import { debounce } from 'lodash';
-import { Search, Star } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { useState, useEffect, ChangeEvent } from 'react'
 import Skeleton from 'react-loading-skeleton';
 import { Link } from 'react-router-dom';
@@ -14,7 +14,7 @@ const Reviews = () => {
     const [ reviews, setReviews ] = useState<Record<string, any>[]>();
     const [ search,  setSearch  ] = useState<string>('');
 
-    const { data, refetch } = useReviews({ page, search });
+    const { data, refetch } = useSlides({ page, search });
 
 
     const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
@@ -51,31 +51,11 @@ const Reviews = () => {
 
             <div className="flex flex-wrap gap-6 mt-12">
                 {reviews && reviews.map((item: Record<string, any>, index: number) => 
-                    <Link className='flex-grow w-[450px] last-of-type:max-w-[49%]' key={index} to={`/admin/reviews/edit/${item.id}`}>
-                        <div className="relative w-full bg-white group hover:scale-105 h-max overflow-hidden transition duration-300 p-9" key={index}>
-                            <div className="">
-                                <div className="mx-auto h-[120px] w-[120px] rounded-full overflow-hidden">
-                                <img src={item.image} alt="" className="img-cover" />
-                                </div>
-
-                                <div className="flex justify-center items-center text-yellow-400 gap-1.5 my-3">
-                                    {Array.from({length: item.stars}, (_, index) => 
-                                        <Star key={index} fill="gold"/>
-                                    )}
-                                    {Array.from({length: 5 - item.stars}, (_, index) => 
-                                        <span key={index} className="text-gray-200">
-                                            <Star fill="#e9e9e9"/>
-                                        </span>
-                                    )}
-                                </div>
-
-                                <div className="text-center">{item.name}</div>
-
-                            </div>
-                            <p className="mt-3 text-center max-[450px]:text-sm">
-                                {item.review}
-                            </p>
+                    <Link className=' bg-white p-6 pb-3 flex-grow w-[450px] last-of-type:max-w-[49%]' key={index} to={`/admin/slides/edit/${item.id}`}>
+                        <div className="relative w-full  group hover:scale-105 h-[250px] overflow-hidden transition duration-300" key={index}>
+                            <img src={item.image} alt="slide" className="img-cover" />
                         </div>
+                        <button className="mt-3 bg-blue-900 px-6 py-1.5 w-full rounded-md text-white">Edit Slide</button>
                     </Link>
                 )}
 

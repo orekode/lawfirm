@@ -1,17 +1,23 @@
 
 
+import { useSetting } from '@/api/settings/read';
 import { Nav } from '@/components'
 import Footer from '@/components/Footer'
 import {} from 'react'
+import Skeleton from 'react-loading-skeleton';
 
 const About = () => {
+
+  const { data } = useSetting({ id: 1 });
+
   return (
     <div>
           <Nav bg={false}/>
 
           <section className="p-24 max-[750px]:p-12 max-[520px]:p-4 max-[600px]:mt-12">
-            <div className="max-w-[1000px] mx-auto">
-              <img src="/images/legal_team.webp" className="object-contain h-full w-full" />
+            <div className="max-w-[1000px] min-h-[300px] mx-auto">
+              {!data && <Skeleton height={400} /> }
+              {data && <img src={data?.digital_address} className="object-contain h-full w-full" />}
             </div>
           </section>
         

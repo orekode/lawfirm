@@ -9,3 +9,4 @@ export { default as Empty       } from "./Empty";
 export { default as Loading     } from "./Loading";
 export { default as Pagination  } from "./Pagination";
 export { default as Footer      } from "./Footer";
+export { default as Loader      } from "./Loader";

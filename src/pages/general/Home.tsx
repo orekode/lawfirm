@@ -1,6 +1,7 @@
 import { useLitigations } from "@/api/litigation/read";
 import { useReviews } from "@/api/reviews/read";
-import { Nav, Image } from "@/components";
+import { useSlides } from "@/api/slides/read";
+import { Nav, Image, Loader } from "@/components";
 import Footer from "@/components/Footer";
 import Slides from "@/components/Slides";
 import { Facebook, Linkedin, Star, Twitter} from "lucide-react";
@@ -125,17 +126,38 @@ const Reviews = () => {
 }
 
 
-const Home = () => {
+const HomeSlide = () => {
+  const [ page ] = useState<number>(1);
+    const [ reviews, setReviews ] = useState<Record<string, any>[]>();
+    const [ search ] = useState<string>('');
 
+    const { data, } = useSlides({ page, search });
+
+    useEffect(() => {
+        setReviews(data?.data);
+    }, [data]);
+
+    return (
+      <Slides slides={ reviews || slides} />
+    );
+
+}
+
+
+const Home = () => {
+  const [ show, setShow ] = useState<boolean>(true);
+
+  setTimeout( () => {if(show) setShow(!show);}, 6000);
 
   
 
   return (
-    <div>
+    <div> 
+          <Loader show={show} />
           <Nav />
           {/* <div className="mt-12"></div> */}
-          <Slides slides={slides} />
 
+          <HomeSlide />
           <section className="p-24 max-[645px]:p-12">
             <div className="text-center">
               <h1 data-aos="zoom-in-up" className="text-6xl max-[645px]:mb-3 max-[645px]:text-4xl font-light">Our Services</h1>

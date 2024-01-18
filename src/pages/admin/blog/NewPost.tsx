@@ -80,7 +80,7 @@ const NewPost = () => {
         <div className="form-control flex flex-col gap-1 mt-4">
             <label htmlFor="stars">Category</label>
             <div className="flex items-center gap-2">
-              <select defaultValue={3} onChange={(event: ChangeEvent<HTMLSelectElement>) => setFormData({...formData, category: event.target.value})} name="stars"  className="shadow px-3 py-1.5 rounded-md text-xl pops bg-white" style={{width: "calc(100% - 60px)"}}>
+              <select defaultValue={1} onChange={(event: ChangeEvent<HTMLSelectElement>) => setFormData({...formData, category: event.target.value})} name="stars"  className="shadow px-3 py-1.5 rounded-md text-xl pops bg-white" style={{width: "calc(100% - 60px)"}}>
                   <CategorySelect />
               </select>
               <button onClick={() => showCreateCategoryPrompt(setLoad, setErrors, queryClient)} className="bg-blue-950 text-white h-[50px] w-[50px] rounded-md flex items-center justify-center ">

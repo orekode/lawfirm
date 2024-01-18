@@ -2,7 +2,7 @@
 
 
 import { BookUser, Home, ImagePlus, Layout, MessageCircle, Scale, Settings, Stars, Users } from 'lucide-react'
-import {} from 'react'
+import { useState } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 
 const navs = [
@@ -57,10 +57,11 @@ const navs = [
 const AdminLayout = () => {
 
     const location = useLocation();
+    const [ visible, setVisible ] = useState<boolean>(true);
 
   return (
-    <div>
-        <div className="admin-layout transition-all duration-300 flex fixed h-screen top-0 right-0 overflow-hidden bg-blue-50">
+    <div className='w-screen overflow-hidden'>
+        <div className={`admin-layout ${ visible ? 'active' : '' } transition-all duration-300 flex fixed h-screen top-0 right-0 overflow-hidden bg-blue-50`}>
             <div className="w-[260px] h-full bg-blue-950 text-white"> 
                 <div className="logo uppercase bold font-bold text-3xl text-center p-6">Elthed</div>
                 <div className="navs p-3">
@@ -74,10 +75,14 @@ const AdminLayout = () => {
                     )}
                 </div>
             </div>
-            <div style={{width: "calc(100% - 260px)"}} className="flex-grow">
+            <div style={{width: "calc(100% - 260px)"}} className="flex-grow ">
 
-                <div className="h-[8vh] flex items-center justify-between bg-white">
-
+                <div className="h-[8vh] flex items-center justify-between bg-white p-6">
+                    <div onClick={() => setVisible(!visible)} className=" w-[40px]">
+                        <div className={`bg-black h-0.5 w-full my-2`}></div>
+                        <div className={`bg-black h-0.5 w-full my-2`}></div>
+                        <div className={`bg-black h-0.5 w-full my-2`}></div>
+                    </div>
                 </div>
 
                 <div className="h-[92vh] bg-green-50 overflow-y-scroll p-9"> 

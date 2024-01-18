@@ -35,7 +35,10 @@ const Nav = ({ bg=true }) => {
     return (
         <div>
             <nav className={` px-24 max-[600px]:px-12 py-4 flex items-center justify-between fixed top-0 left-0 w-full z-50 ${bg ? "bg-[#111] bg-opacity-50  -gradient-to-b from-black to-transparent text-white" : "text-[#111]"} backdrop-blur-sm`}>
-                <div className="logo">ELTHED LOGO</div>
+                <div className="logo h-[60px] w-[200px] max-[550px]:w-[60px]">
+                  <img src={ bg ? "/images/white.png" : "/images/logo.png"} alt="ELTHED LOGO" className="img-contain max-[550px]:hidden" />
+                  <img src={ bg ? "/images/white_small.png" : "/images/logo_small.png"} alt="ELTHED LOGO" className="img-contain min-[550px]:hidden" />
+                </div>
 
                 <div className={`nav-links flex items-center max-[1075px]:items-start gap-6 max-[1075px]:gap-1 max-[1075px]:fixed top-0 ${ visible ? 'max-[1075px]:left-0' : 'max-[1075px]:-left-96'} transition-all duration-300 max-[1075px]:bg-white max-[1075px]:flex-col max-[1075px]:h-screen max-[1075px]:w-[320px] max-[1075px]:p-6 max-[1075px]:py-12 relative`}>
 

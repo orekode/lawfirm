@@ -1,5 +1,6 @@
 
 import { createMessage } from '@/api/messages/create';
+import { useSetting } from '@/api/settings/read';
 import { Footer, Loading, Nav } from '@/components'
 import { ChangeEvent, useState } from 'react'
 import { useQueryClient } from 'react-query';
@@ -13,6 +14,8 @@ const Contact = () => {
     const [ load, setLoad ] = useState<boolean>(false);
 
     const queryClient = useQueryClient();
+
+    const { data } = useSetting({ id: 1 });
 
     const handleCreate = async () => {
 
@@ -118,12 +121,13 @@ const Contact = () => {
                         <div className="col-span-6">
                             <div className=" text-lg text-center mt-6">ELTHED at Law Consult </div>
                             <div className="pops leading-loose text-sm font-light flex gap-6 gap-y-1.5 justify-center flex-wrap max-w-[800px] mx-auto">
-                                <div className="">Digital Address – GA -047-5618</div>
-                                <div className="">No 5 Royal Castle Road,</div>
-                                <div className="">Kokomlemle, Accra, GA, Ghana.</div>
-                                <div className="">Email: info@elthedatlaw.com </div>
-                                <div className="">Tel: +233 30 223 7419</div>
-                                <div className="">Mob: +233 243 211 165</div>
+                                <div dangerouslySetInnerHTML={{__html: data?.physical_address}} className="pops">
+                                </div>
+                                <div className="">
+                                    <div className="">Email: {data?.email} </div>
+                                    <div className="">Tel: {data?.tel_number}</div>
+                                    <div className="">Mob: {data?.mob_number}</div>
+                                </div>
                             </div>
                         </div>
                     </div>

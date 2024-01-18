@@ -221,7 +221,9 @@ const Home = () => {
                 <div className="max-[700px]:text-center">
                   <h1 data-aos="zoom-in-up" className="text-4xl">Our Mission</h1>
                   <p data-aos="zoom-in-up" className="mt-1.5 leading-relaxed text-lg">Our Mission is to be a trusted legal partner for individuals, businesses, and organizations. Also to navigate the complexities of the legal landscape on behalf of our clients, ensuring they receive sound legal advice, strategic counsel, and assertive advocacy.</p>
-                  <button data-aos="zoom-in-up" className="bg-white px-6 py-3 mt-6 text-lg text-neutral-900">Get in Touch</button>
+                  <Link to={'/contact'}>
+                    <button data-aos="zoom-in-up" className="bg-white px-6 py-3 mt-6 text-lg text-neutral-900">Get in Touch</button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -235,7 +237,9 @@ const Home = () => {
 
                 <p data-aos="zoom-in-up" className="max-w-[400px] max-[990px]:hidden mx-auto my-3 text-right">Our seasoned lawyers are trained experts in the following areas of litigation</p>
                 
-              <button data-aos="zoom-in-up" className="px-6 py-4 bg-[#e88b28] text-white capitalize mt-3">See the complete list</button>
+                <Link to={'/litigations'}>
+                  <button data-aos="zoom-in-up" className="px-6 py-4 bg-[#e88b28] text-white capitalize mt-3">See the complete list</button>
+                </Link>
             </div>
 
             <Litigation />

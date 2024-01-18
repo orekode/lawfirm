@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { Image } from '.'
+import { Link } from 'react-router-dom';
 
 const Slides = ({ slides }: { slides: Record<string, any>[]}) => {
     const [ activeSlide, setActiveSlide ] = useState([2, 0]);
@@ -45,7 +46,9 @@ const Slides = ({ slides }: { slides: Record<string, any>[]}) => {
                     <div className=" min-h-screen p-24 max-[645px]:p-12 flex items-center">
                         <div className="max-w-[600px]">
                         <h1 data-aos="zoom-in-up" className="text-5xl max-[645px]:text-4xl leading-tight capitalize">{item.title}</h1>
-                        <button data-aos="zoom-in-up" className="px-6 py-4 bg-[#e88b28] capitalize mt-3">Get a consultation</button>
+                        <Link to={item.link}>
+                            <button data-aos="zoom-in-up" className="px-6 py-4 bg-[#e88b28] capitalize mt-3">{item.button}</button>
+                        </Link>
                         </div>
                     </div>
                     </div>

@@ -21,3 +21,11 @@ export const useSetting = ({ id } : { id: number | string | undefined }) => {
         key: 'setting',
     });
 }
+
+export const useDashboard = () => {
+    return read({
+        id: "",
+        url: '/dashboard',
+        key: 'Dashboard'
+    })
+}

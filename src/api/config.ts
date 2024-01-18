@@ -115,7 +115,10 @@ export const read = ({ id, url, key } : Read) => {
 
         try {
 
-            const response = await axios.get(`${url}/${id}`);
+            let response;
+            if(id !== "")
+                response = await axios.get(`${url}/${id}`);
+            else response = await axios.get(`${url}`);
 
             return response.data.data || response.data || response;
 

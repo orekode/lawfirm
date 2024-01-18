@@ -15,7 +15,9 @@ const Footer = () => {
         <footer className="p-24 max-[566px]:px-6 bg-black bg-opacity-80 text-center text-white">
             <div className="max-w-[550px] mx-auto capitalize">
             <div data-aos="zoom-in-up" className="h1 text-4xl max-[400px]:text-3xl leading-normal">the right lawyer makes all the difference</div>
-            <button data-aos="zoom-in-up" className="px-6 py-4 bg-[#e88b28] capitalize mt-3">Get a consultation</button>
+            <Link to={'/contact'}>
+              <button data-aos="zoom-in-up" className="px-6 py-4 bg-[#e88b28] capitalize mt-3">Get a consultation</button>
+            </Link>
             <div className="flex items-center gap-6 mt-6 justify-center">
                 <Link to={data?.instagram} data-aos="zoom-in-up" className="icon bg-black border-2  h-[50px] w-[50px] rounded-full flex items-center justify-center">
                   <Linkedin  size={30} />

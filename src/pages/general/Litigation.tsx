@@ -1,7 +1,7 @@
 
 
 import { useLitigation } from '@/api/litigation/read';
-import { Image, Nav } from '@/components'
+import { Image, Loading, Nav } from '@/components'
 import {} from 'react'
 import { useParams } from 'react-router-dom';
 
@@ -13,6 +13,7 @@ const Litigation = () => {
     return (
         <div>
             <Nav />
+            <Loading load={!data} />
             <Image image={data?.cover_image}>
                 <header className="min-h-screen relative max-[950px]:block flex items-center gap-12 p-24 pb-0 max-[1050px]:px-12 max-[500px]:px-6 bg-[#111] bg-opacity-90 text-white">
 

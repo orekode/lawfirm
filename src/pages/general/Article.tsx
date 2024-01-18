@@ -71,12 +71,12 @@ const Article = () => {
         <Nav />
         <Loading load={load} />
         <Image image={data?.cover_image}>
-            <header className='h-[420px] max-[630px]:h-max bg-black text-white text-center py-28 max-[630px]:pb-6  bg-opacity-50 relative'>
+            <header className='h-[420px] max-[630px]:h-max bg-black text-white text-center py-28 max-[630px]:pb-6  bg-opacity-70 relative'>
                 <div className="h-[200px] w-[200px] rounded-full overflow-hidden mx-auto">
                     <img src={data?.image} alt="" className="img-cover" />
                 </div>
-                <h1 className="font-bold text-4xl mt-3">{data?.title}</h1>
-                <p className="bg-white p-6 rounded-md max-w-[750px] shadow leading-relaxed mx-auto scale-95 text-[#222]">{data?.description}</p>
+                <h1 className="font-bold text-4xl mt-3 max-w-[750px] mx-auto">{data?.title}</h1>
+                <p className="bg-white p-6 rounded-md max-w-[750px] shadow leading-relaxed mx-auto scale-95 text-[#222]">{data?.description.slice(0, 250)} {data?.description?.length > 250 && "..."}</p>
             </header>
 
         </Image>

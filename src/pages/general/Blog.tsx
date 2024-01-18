@@ -1,7 +1,6 @@
 
 import { usePosts } from '@/api/blog/read';
-import { Empty, Loading, Nav, Pagination, Scroll } from '@/components'
-// import CategoryScroll from '@/components/CategoryScroll';
+import { Empty, Loading, Nav, Pagination } from '@/components'
 import { debounce } from 'lodash';
 import { Search } from 'lucide-react'
 import { ChangeEvent, useEffect, useState } from 'react'

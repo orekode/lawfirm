@@ -1,4 +1,4 @@
-import { Upload, UploadCloud } from "lucide-react";
+import { UploadCloud } from "lucide-react";
 import { ChangeEvent, useEffect, useRef, useState } from "react"
 
 

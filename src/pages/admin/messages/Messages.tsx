@@ -3,10 +3,9 @@
 import { useMessages } from '@/api/messages/read';
 import { Empty, Pagination } from '@/components'
 import { debounce } from 'lodash';
-import { Search, Star } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { useState, useEffect, ChangeEvent } from 'react'
 import Skeleton from 'react-loading-skeleton';
-import { Link } from 'react-router-dom';
 
 const Messages = () => {
 

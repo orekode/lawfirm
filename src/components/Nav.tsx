@@ -1,7 +1,7 @@
 
 
-import { ChevronRight, Menu, X } from 'lucide-react';
-import React, { useState } from 'react';
+import { ChevronRight, X } from 'lucide-react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const navs = [

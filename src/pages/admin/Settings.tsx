@@ -5,7 +5,6 @@ import { ChangeEvent, useEffect, useState } from "react"
 import { useQueryClient } from "react-query";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
@@ -19,7 +18,6 @@ const Settings = () => {
   const [ load, setLoad ] = useState<boolean>(false);
   const [ errors, setErrors ] = useState<Record<string, any>>({});
 
-  const navigate = useNavigate();
   const queryClient = useQueryClient();
 
   const handleCreate = async () => {

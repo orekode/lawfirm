@@ -1,10 +1,10 @@
 import { useLitigations } from "@/api/litigation/read";
 import { useReviews } from "@/api/reviews/read";
 import { useSlides } from "@/api/slides/read";
-import { Nav, Image, Loader } from "@/components";
+import { Nav, Loader } from "@/components";
 import Footer from "@/components/Footer";
 import Slides from "@/components/Slides";
-import { Facebook, Linkedin, Star, Twitter} from "lucide-react";
+import { Star } from "lucide-react";
 import { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import { Link } from "react-router-dom";

@@ -1,4 +1,3 @@
-import { deleteLitigation } from "@/api/litigation/delete";
 import { deleteSlide } from "@/api/slides/delete";
 import { useSlide } from "@/api/slides/read";
 import { updateSlide } from "@/api/slides/update";
@@ -6,8 +5,6 @@ import { Loading, Upload } from "@/components"
 import { Trash } from "lucide-react";
 import { ChangeEvent, useEffect, useState } from "react"
 import { useQueryClient } from "react-query";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 

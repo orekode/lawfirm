@@ -4,7 +4,7 @@ import { usePost, useRelatedPosts } from '@/api/blog/read';
 import { Image, Loading, Nav } from '@/components'
 import { useEffect, useState } from 'react'
 import Skeleton from 'react-loading-skeleton';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 
 const Related = ({ id } : { id: number | undefined }) => {

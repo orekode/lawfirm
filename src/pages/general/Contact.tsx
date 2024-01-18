@@ -1,7 +1,7 @@
 
 import { createMessage } from '@/api/messages/create';
 import { Footer, Loading, Nav } from '@/components'
-import { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import { useQueryClient } from 'react-query';
 import Swal from 'sweetalert2';
 

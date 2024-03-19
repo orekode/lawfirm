@@ -25,8 +25,8 @@ const Loader = ({ show=true } : { show?: boolean }) => {
     visible: {
       opacity: 1,
       scale: 1,
-      '-webkit-text-stroke':'0.5px #0033ff',
-      color: '#0033ff',
+      '-webkit-text-stroke':'0.5px #0cb2ef',
+      color: '#0cb2ef',
       transition: {
         type: "spring",
         stiffness: 100,
@@ -72,7 +72,7 @@ const Loader = ({ show=true } : { show?: boolean }) => {
         </motion.div>
 
         <motion.div initial={{ height: 0, opacity: 0 }} animate={{height: '5px', opacity: 1}} transition={{ delay: 3 }} className="w-[500px] max-[600px]:w-[300px] rounded-full bg-[#c9c6c6] overflow-hidden">
-          <motion.div initial={{ width: '0%' }} animate={{ width: '110%' }} transition={{ease: "linear", duration: 3, delay: 3 }} className="w-[10%] -left-1 rounded-full h-full bg-[#0033ff]"></motion.div>
+          <motion.div initial={{ width: '0%' }} animate={{ width: '110%' }} transition={{ease: "linear", duration: 3, delay: 3 }} className="w-[10%] -left-1 rounded-full h-full bg-[#0cb2ef]"></motion.div>
         </motion.div>
 
       </section>
